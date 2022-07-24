@@ -7,6 +7,15 @@ let vidasEnemigo=3;
 
 
 function iniciarJuego(){
+
+    let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque');
+    sectionSeleccionarAtaque.style.display = 'none';
+
+    let sectionReiniciar = document.getElementById('reiniciar');
+    sectionReiniciar.style.display = 'none';
+
+
+
     let botonMascotaJuegador =document.getElementById("boton-mascota");
     botonMascotaJuegador.addEventListener('click', seleccionarMascotaJugador);
 
@@ -18,8 +27,18 @@ function iniciarJuego(){
     let botonTierra=document.getElementById('boton-tierra');
     botonTierra.addEventListener('click',ataqueTierra);
 
+    let botonReiniciar= document.getElementById('boton-reiniciar');
+    botonReiniciar.addEventListener('click', reiniciarJuego);
+
 }
 function seleccionarMascotaJugador(){
+
+    let sectionSeleccionarMascota = document.getElementById('seleccionar-mascota');
+    sectionSeleccionarMascota.style.display = 'none';
+    
+    let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque');
+    sectionSeleccionarAtaque.style.display = 'block';
+
     let inputHipodoge = document.getElementById('hipodoge');
     let inputCapipepo = document.getElementById('capipepo');
     let inputRatigueya = document.getElementById('ratigueya');
@@ -34,7 +53,8 @@ function seleccionarMascotaJugador(){
         //alert('seleccionaste a ratigueya');
         spanMascotaJugador.innerHTML='Ratigueya';
     }else{
-        alert('no se seleciono mascota');
+        alert('No se selecionó mascota');
+        reiniciarJuego();
     }
 
     seleccionarMascotaEnemigo();
@@ -133,6 +153,20 @@ function crearMensajeFinal(resultadoFinal){
     let insertar =document.getElementById('mensajes');
     parrafo.innerHTML= resultadoFinal;
     insertar.appendChild(parrafo);
+
+    let botonFuego =document.getElementById('boton-fuego');
+    botonFuego.disabled=true;
+    let botonAgua=document.getElementById('boton-agua');
+    botonAgua.disabled=true;
+    let botonTierra=document.getElementById('boton-tierra');
+    botonTierra.disabled=true;
+
+    let sectionReiniciar = document.getElementById('reiniciar');
+    sectionReiniciar.style.display = 'block';
+}
+
+function reiniciarJuego(){
+    location.reload();
 }
 
 function aleatorio(min, max){

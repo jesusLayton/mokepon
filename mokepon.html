@@ -6,25 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mokepon! 🔥💧🌱</title>
     <script src="./js/mokepon.js"></script>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <h1>Mokepon! 🔥💧🌱</h1>
-
     <section id="seleccionar-mascota">
-        <h2>Elige tu mascota:</h2>
+        <h1 class="titulo">Mokepon</h1>
+        <h2 class="subtitulo">Elige tu mascota:</h2>
 
-        <label for="hipodoge">Hipodoge</label>
-        <input type="radio"name="mascota" id="hipodoge">
-        <label for="capipepo">Capipepo</label>
-        <input type="radio"name="mascota"id="capipepo">
-        <label for="ratigueya">Ratigueya</label>
-        <input type="radio"name="mascota"id="ratigueya">       
+        <div class="tarjetas">
+            <label for="hipodoge" class="tarjeta-de-mokepon">Hipodoge</label>
+            <input type="radio"name="mascota" id="hipodoge">
+            <label for="capipepo" class="tarjeta-de-mokepon">Capipepo</label>
+            <input type="radio"name="mascota"id="capipepo">
+            <label for="ratigueya" class="tarjeta-de-mokepon">Ratigueya</label>
+            <input type="radio"name="mascota"id="ratigueya">   
+
+        </div>
+
+            
 
         <button id="boton-mascota">Seleccionar</button>
 
     </section>
 
     <section id="seleccionar-ataque">
+        <h1 class="titulo">Mokepon! 🔥💧🌱</h1>
         <h2>Elige tu ataque:</h2>
         <p>Tu mascota <span id="mascota-jugador"></span> tiene <span id="vidas-jugador">3</span> vidas</p>
         <p>La mascota <span id="mascota-enemigo"></span> del enemigo tiene <span id="vidas-enemigo">3</span> vidas</p>
