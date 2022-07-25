@@ -22,6 +22,7 @@ const ataquesDelJugador =document.getElementById('ataque-del-juegador');
 const ataquesDelEnemigo =document.getElementById('ataque-del-enemigo');
 
 const insertar =document.getElementById('resultado');
+const contenedorTarjetas = document.getElementById('contenedorTrjetas');
 
 let mokepones = [];
 let ataqueJugador;
@@ -73,8 +74,16 @@ mokepones.push(hipodoge,capipepo,ratigueya);
 
 function iniciarJuego(){    
     sectionSeleccionarAtaque.style.display = 'none';    
-    mokepones.forEach((Mokepon) =>{
-        
+    mokepones.forEach((mokepon) =>{
+        opcionDeMokepones = `
+        <input type="radio"name="mascota" id=${mokepon.nombre}>
+        <label for=${mokepon.nombre} class="tarjeta-de-mokepon">
+            <p>${mokepon.nombre}</p>
+            <img src=${mokepon.foto} alt=${mokepon.nombre}>
+        </label>
+
+        `
+    contenedorTarjetas.innerHTML += opcionDeMokepones;
     })
     sectionReiniciar.style.display = 'none';    
     botonMascotaJuegador.addEventListener('click', seleccionarMascotaJugador);   
