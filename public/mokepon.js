@@ -175,8 +175,7 @@ function unirseAlJuego() {
             }
         })
 }
-function seleccionarMascotaJugador(){    
-    sectionSeleccionarMascota.style.display = 'none';     
+function seleccionarMascotaJugador(){            
 
     if(inputHipodoge.checked){       
         spanMascotaJugador.innerText=inputHipodoge.id;
@@ -189,8 +188,10 @@ function seleccionarMascotaJugador(){
         mascotaJugador = inputRatigueya.id;
     }else{
         alert('No se selecionó mascota');
-        reiniciarJuego();
+        return
     }
+
+    sectionSeleccionarMascota.style.display = 'none'; 
 
     seleccionarMokepon(mascotaJugador);
 
@@ -286,8 +287,25 @@ function enviarAtaque(){
         })
 
     })
-}
 
+    intervalo = setInterval(obtenerAtaques, 50);
+
+}
+function obtenerAtaques(){
+    fetch(`http://localhost:8080/mokepon/${enemigoId}/ataques`)
+        .then(function(res){
+            if (res.ok) {
+                res.json()
+                    .then(function({ ataques }){
+                        if(ataques.length===5){
+                            ataqueEnemigo = ataques;
+                            combate();
+                        }
+                    })
+                
+            }
+    })
+}
 function seleccionarMascotaEnemigo(enemigo){
     //let mascotaAtaqueAleatorio= aleatorio(0 ,mokepones.length -1);
     spanMascotaEnemigo.innerHTML =enemigo.nombre;
@@ -323,6 +341,7 @@ function indexAmbosOponentes(jugador, enemigo){
 }
 
 function combate(){   
+    clearInterval(intervalo);
     
     for (let index = 0; index < ataqueJugador.length; index++) {
         if (ataqueJugador[index]===ataqueEnemigo[index] ) {
